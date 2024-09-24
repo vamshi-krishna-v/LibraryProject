@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block content %}
+<h2>{{ book.title }} ({{ book.author }})</h2>
+<p>Publication Date: {{ book.publication_date }}</p>
+<p>ISBN: {{ book.isbn }}</p>
+{% if book.borrowed %}
+<p>
+  Borrowed by {{ book.borrowing.borrower }} on {{ book.borrowing.borrow_date }}
+</p>
+{% endif %}
+<a href="{% url 'borrow_book' book.pk %}">Borrow Book</a>
+<a href="{% url 'return_book' book.pk %}">Return Book</a>
+{% endblock %}
